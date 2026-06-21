@@ -11,8 +11,8 @@ export default class MenuPage {
     private restaurantLogo = () => this.page.locator("img[alt='Restaurant Logo']");
 
     // Action
-    public async goToMenuPage(tableNumber: number) {
-        await this.page.goto(`https://demo-restaurant.smap.ph/?table=${tableNumber}`);
+    public async goToMenuPage() {
+        await this.page.goto('https://demo-restaurant.smap.ph/?table=1');
     }
 
     // Assertions
