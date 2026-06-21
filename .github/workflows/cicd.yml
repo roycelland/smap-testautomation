@@ -19,8 +19,11 @@ jobs:
         node-version: lts/*
 
     - name: Install dependencies
-      run: npm ci --ignore-scripts && npm i -D @playwright/test@1.61.0 && npm playwright install --with-deps
+      run: npm ci
 
+    - name: Install Playwright Browsers
+      run: npx playwright install --with-deps
+      
     - name: Run Playwright tests
       run: npx playwright test
 
