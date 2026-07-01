@@ -28,13 +28,12 @@ export default class MenuPage {
     }
 
     public async addRandomItemToCart(totalItems: number){
-            let randomIndex: string | number;
-            randomIndex = Math.floor(Math.random() * (totalItems -2)) + 1;
-            await this.addQuantity().nth(randomIndex).click();
-            const itemName = await this.menuItems().nth(randomIndex).locator('span').nth(0).textContent(); //ITEM NAME
-            const itemPrice = await this.menuItems().nth(randomIndex).locator('span').nth(1).textContent(); //ITEM PRICE
-            const itemQuantity = await this.menuItems().nth(randomIndex).locator('span').nth(2).textContent(); //ITEM QUANTITY
-            return { name: itemName?.trim(), price: itemPrice?.slice(1), quantity: itemQuantity?.trim() };
+        const randomIndex = Math.floor(Math.random() * 5);
+        await this.addQuantity().nth(randomIndex).click();
+        const itemName = await this.menuItems().nth(randomIndex).locator('span').nth(0).textContent(); //ITEM NAME
+        const itemPrice = await this.menuItems().nth(randomIndex).locator('span').nth(1).textContent(); //ITEM PRICE
+        const itemQuantity = await this.menuItems().nth(randomIndex).locator('span').nth(2).textContent(); //ITEM QUANTITY
+        return { name: itemName, price: itemPrice?.slice(1), quantity: itemQuantity };
     }
 
     // Assertions
@@ -42,11 +41,11 @@ export default class MenuPage {
         await expect(this.restaurantLogo()).toBeVisible();
     }
 
-    public async cartBarCountShouldBe(expectedCount: number) {
+    public async cartBarCountShouldBe(expectedCount: string) {
         await expect(this.cartBarCount()).toHaveText(expectedCount.toString());
     }
 
-    public async cartBarTotalShouldBe(expectedTotal: number) {
+    public async cartBarTotalShouldBe(expectedTotal: string) {
         await expect(this.cartBarTotal()).toHaveText(expectedTotal.toString());
     }
 }

@@ -9,9 +9,9 @@ test.describe("Order Page Test", () => {
     test("verify that user can add items to cart and the cart bar updates accordingly", async ({ menuPage }) => {
         await menuPage.goToMenuPage();
         const totalItems = await menuPage.getTotalItemsInMenu();
-        console.log(`Total items in menu: ${totalItems}`);
         const { name, price, quantity } = await menuPage.addRandomItemToCart(totalItems);
-        await menuPage.cartBarCountShouldBe(quantity);
-        await menuPage.cartBarTotalShouldBe(price);
+        console.log(`Added item to cart: ${name}, Price: ${price}, Quantity: ${quantity}`);
+        await menuPage.cartBarCountShouldBe(quantity!);
+        await menuPage.cartBarTotalShouldBe(price!);
     });
 });
