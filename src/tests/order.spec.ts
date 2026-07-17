@@ -6,7 +6,7 @@ test.describe("Order Page Test", () => {
         await menuPage.isRestaurantLogoVisible();
     });
 
-    test("verify that user can add items to cart and the cart bar updates accordingly", async ({ menuPage }) => {
+    test("Verify that user can add items to cart and the cart bar updates accordingly", async ({ menuPage }) => {
         await menuPage.goToMenuPage();
         const totalItems = await menuPage.getTotalItemsInMenu();
         const { name, price, quantity } = await menuPage.addRandomItemToCart(totalItems);
